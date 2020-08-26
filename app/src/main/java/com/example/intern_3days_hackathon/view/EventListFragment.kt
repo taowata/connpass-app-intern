@@ -2,6 +2,7 @@ package com.example.intern_3days_hackathon.view
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,11 +54,22 @@ class EventListFragment : Fragment() {
 
             adapter.setOnItemClickListener(object : EventListViewAdapter.OnItemClickListener {
                 override fun onItemClickListener(item: Event) {
-                    val builder = CustomTabsIntent.Builder()
-                    val customTabsIntent = builder.build()
-                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
+//                    val builder = CustomTabsIntent.Builder()
+//                    val customTabsIntent = builder.build()
+//                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
+                    Log.i("", "Tap")
+                    showEventListDetailFragment(events!!)
                 }
             })
+        }
+    }
+
+    private fun showEventListDetailFragment(events: ArrayList<Event>) {
+        fragmentManager?.let {
+            val fragmentTransaction = it.beginTransaction()
+            fragmentTransaction.replace(R.id.search_layout_frame, EventListDetailFragment.newInstance(events))
+                    .addToBackStack(null)
+                    .commit()
         }
     }
 
