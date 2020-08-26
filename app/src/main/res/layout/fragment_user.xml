@@ -16,7 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/ic_baseline_person_24"
         tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/edit_icon_my_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:layout_constraintBottom_toBottomOf="@+id/user_icon"
+        app:layout_constraintEnd_toEndOf="@+id/user_icon" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -47,10 +56,9 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/username_container"
+                android:id="@+id/user_name_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/not_registered"
                 app:layout_constraintBottom_toBottomOf="@+id/user_name_tv"
                 app:layout_constraintEnd_toStartOf="@+id/edit_icon_username"
                 app:layout_constraintStart_toEndOf="@+id/user_name_tv"
@@ -170,13 +178,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/edit_icon_my_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_edit_24"
-        app:layout_constraintBottom_toBottomOf="@+id/user_icon"
-        app:layout_constraintEnd_toEndOf="@+id/user_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
