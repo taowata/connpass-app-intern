@@ -40,6 +40,7 @@ class EventListDetailFragment : Fragment() {
     private fun setupWebView() {
         view?.let {
             val webView: WebView = webView
+            webView.loadUrl(events!![0].eventURL)
         }
     }
 
