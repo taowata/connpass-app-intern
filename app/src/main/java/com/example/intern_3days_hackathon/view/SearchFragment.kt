@@ -34,7 +34,7 @@ class SearchFragment : Fragment() {
     private fun showEventListFragment(events: ArrayList<Event>) {
         fragmentManager?.let {
             val fragmentTransaction = it.beginTransaction()
-            fragmentTransaction.replace(R.id.search_layout_frame, EventListFragment.newInstance(events))
+            fragmentTransaction.replace(R.id.nav_fragment, EventListFragment.newInstance(events))
                     .addToBackStack(null)
                     .commit()
         }

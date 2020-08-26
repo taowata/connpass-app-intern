@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/nav_list"
-        android:title="@string/sample"
+        android:id="@+id/searchFragment"
+        android:title="@string/search_tab"
+        android:color="@color/colorWhite"
+        />
+
+    <item
+        android:id="@+id/savedEventFragment"
+        android:title="@string/saved_event_tab"
         android:color="@color/colorWhite"
         />
     <item
-        android:id="@+id/nab_setting"
-        android:title="@string/tab1"
+        android:id="@+id/userFragment"
+        android:title="@string/user_tab"
         android:color="@color/colorWhite"
         />
 </menu>
