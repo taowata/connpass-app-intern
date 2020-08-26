@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Intern_3days_Hackathon</string>
+    <string name="search_view">検索画面</string>
+    <string name="event_list_view">イベント一覧</string>
+    <string name="search">検索</string>
+    <string name="search_comment">キーワードを入力してください</string>
+
+    <string name="event_address">開催地:</string>
+    <string name="sample">サンプル</string>
+    <string name="tab1">タブ</string>
+</resources>
