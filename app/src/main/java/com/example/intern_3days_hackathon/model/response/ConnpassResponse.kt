@@ -63,7 +63,8 @@ data class Event(
         val lat: String?,
         val lon: String?,
         val series: Series
-)
+) : java.io.Serializable
+//ここにserializableが追加された
 
 @Serializable
 data class Series(

@@ -1,12 +1,11 @@
 package com.example.intern_3days_hackathon.view
 
-import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +19,7 @@ import java.util.*
 class EventListFragment : Fragment() {
 
     private var events: ArrayList<Event>? = ArrayList()
+    private var event: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,11 +53,22 @@ class EventListFragment : Fragment() {
 
             adapter.setOnItemClickListener(object : EventListViewAdapter.OnItemClickListener {
                 override fun onItemClickListener(item: Event) {
-                    val builder = CustomTabsIntent.Builder()
-                    val customTabsIntent = builder.build()
-                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
+//                    val builder = CustomTabsIntent.Builder()
+//                    val customTabsIntent = builder.build()
+//                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
+                    Log.i("", "Tap")
+                    showEventListDetailFragment(item)
                 }
             })
+        }
+    }
+
+    private fun showEventListDetailFragment(item: Event) {
+        fragmentManager?.let {
+            val fragmentTransaction = it.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_fragment, EventListDetailFragment.newInstance(item))
+                    .addToBackStack(null)
+                    .commit()
         }
     }
 

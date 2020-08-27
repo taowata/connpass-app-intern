@@ -2,6 +2,7 @@
     <string name="app_name">Intern_3days_Hackathon</string>
     <string name="search_view">検索画面</string>
     <string name="event_list_view">イベント一覧</string>
+    <string name="event_list_view_detail">イベント詳細</string>
     <string name="search">検索</string>
     <string name="search_comment">キーワードを入力してください</string>
 
