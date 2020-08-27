@@ -1,7 +1,6 @@
 package com.example.intern_3days_hackathon.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import java.util.*
 class EventListFragment : Fragment() {
 
     private var events: ArrayList<Event>? = ArrayList()
-    private var event: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,10 +51,6 @@ class EventListFragment : Fragment() {
 
             adapter.setOnItemClickListener(object : EventListViewAdapter.OnItemClickListener {
                 override fun onItemClickListener(item: Event) {
-//                    val builder = CustomTabsIntent.Builder()
-//                    val customTabsIntent = builder.build()
-//                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
-                    Log.i("", "Tap")
                     showEventListDetailFragment(item)
                 }
             })

@@ -15,7 +15,6 @@ import java.util.*
 
 class EventListDetailFragment : Fragment() {
 
-    private var events: ArrayList<Event>? = ArrayList()
     private var event: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
