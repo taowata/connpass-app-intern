@@ -72,8 +72,8 @@ class SavedEventFragment : Fragment() {
                                                     Toast.LENGTH_LONG
                                             )
                                                     .show()
-                                            // TODO: 2020/08/28  
-                                            // savedEventViewModel.deleteSavedEvent(savedEvent)
+
+                                            savedEventViewModel.deleteEvent(savedEvent)
                                         }
                                         .show()
                             }

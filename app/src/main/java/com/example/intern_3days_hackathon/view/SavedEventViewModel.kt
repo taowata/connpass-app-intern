@@ -19,4 +19,8 @@ class SavedEventViewModel(
         savedEventDao.insert(event)
     }
 
+    fun deleteEvent(event: SavedEvent) = viewModelScope.launch(Dispatchers.IO) {
+        savedEventDao.delete(event)
+    }
+
 }
