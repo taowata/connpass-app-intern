@@ -8,6 +8,9 @@ import androidx.fragment.app.DialogFragment
 import com.example.intern_3days_hackathon.R
 
 class UserEditDialogFragment : DialogFragment() {
+
+    private var stringParam: String? = null
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
