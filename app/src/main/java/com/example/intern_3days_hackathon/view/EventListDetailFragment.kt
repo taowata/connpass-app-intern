@@ -16,11 +16,12 @@ import java.util.*
 class EventListDetailFragment : Fragment() {
 
     private var events: ArrayList<Event>? = ArrayList()
+    private var event: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let { argument ->
-            events = argument.getSerializable(CONNPASS_EVENTS) as? ArrayList<Event>
+            event = argument.getSerializable(CONNPASS_EVENTS) as? Event
         }
 
         val appCompatActivity = activity as AppCompatActivity?
@@ -34,19 +35,19 @@ class EventListDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setupWebView()
+        setupWebView(event!!)
     }
 
-    private fun setupWebView() {
+    private fun setupWebView(event: Event) {
         view?.let {
             val webView: WebView = webView
-            webView.loadUrl(events!![0].eventURL)
+            webView.loadUrl(event!!.eventURL)
         }
     }
 
     companion object {
         private const val CONNPASS_EVENTS = "connpass_events"
-        fun newInstance(response: ArrayList<Event>): EventListDetailFragment {
+        fun newInstance(response: Event): EventListDetailFragment {
             val fragment = EventListDetailFragment()
             val args = Bundle()
             args.putSerializable(CONNPASS_EVENTS, response)
