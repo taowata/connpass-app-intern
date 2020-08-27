@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.example.intern_3days_hackathon.R
 
@@ -34,6 +35,12 @@ class UserFragment : Fragment() {
         val favWordContainer3 = view.findViewById<TextView>(R.id.like_words_container3)
         val myPageUrlContainer = view.findViewById<TextView>(R.id.my_page_url_container)
 
+        val editIcon = view.findViewById<ImageView>(R.id.edit_icon_username)
+
+        editIcon.setOnClickListener {
+            showDialogFragment()
+        }
+
         setTextToTextView(
                 Pair(userNameContainer, userName!!),
                 Pair(favWordContainer1, favWord1!!),
@@ -47,6 +54,11 @@ class UserFragment : Fragment() {
         for(pair in pairs) {
             pair.first.text = pair.second
         }
+    }
+
+    private fun showDialogFragment() {
+        val newFragment = UserEditDialogFragment()
+        newFragment.show(childFragmentManager, "edit_dialog")
     }
 
 }
