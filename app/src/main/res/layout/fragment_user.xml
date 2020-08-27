@@ -57,22 +57,12 @@
 
             <TextView
                 android:id="@+id/user_name_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/InformationTextViewStyle"
                 app:layout_constraintBottom_toBottomOf="@+id/user_name_tv"
-                app:layout_constraintEnd_toStartOf="@+id/edit_icon_username"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/user_name_tv"
                 tools:text="未登録" />
 
-            <ImageView
-                android:id="@+id/edit_icon_username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,32 +70,29 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/like_words_container3"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:id="@+id/fav_words_container3"
+                style="@style/InformationTextViewStyle"
                 android:text="@string/not_registered"
-                app:layout_constraintBottom_toBottomOf="@+id/like_words_container2"
-                app:layout_constraintEnd_toStartOf="@+id/edit_icon_favorite_word"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/like_words_container2"
+                app:layout_constraintBottom_toBottomOf="@+id/fav_words_container2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fav_words_container2"
                 tools:text="Python" />
 
             <TextView
-                android:id="@+id/like_words_container1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/fav_words_container1"
+                style="@style/InformationTextViewStyle"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/not_registered"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/like_words_container2"
+                app:layout_constraintEnd_toStartOf="@+id/fav_words_container2"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/like_words"
+                app:layout_constraintStart_toEndOf="@+id/fav_words"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Kotlin" />
 
             <TextView
-                android:id="@+id/like_words"
+                android:id="@+id/fav_words"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -117,25 +104,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/like_words_container2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/fav_words_container2"
+                style="@style/InformationTextViewStyle"
                 android:text="@string/not_registered"
-                app:layout_constraintBottom_toBottomOf="@+id/like_words_container1"
-                app:layout_constraintEnd_toStartOf="@+id/like_words_container3"
+                app:layout_constraintBottom_toBottomOf="@+id/fav_words_container1"
+                app:layout_constraintEnd_toStartOf="@+id/fav_words_container3"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/like_words_container1"
+                app:layout_constraintStart_toEndOf="@+id/fav_words_container1"
                 tools:text="Android" />
 
-            <ImageView
-                android:id="@+id/edit_icon_favorite_word"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -156,25 +133,13 @@
 
             <TextView
                 android:id="@+id/my_page_url_container"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/InformationTextViewStyle"
                 android:text="@string/not_registered"
                 app:layout_constraintBottom_toBottomOf="@+id/my_page_url_tv"
-                app:layout_constraintEnd_toStartOf="@+id/edit_icon_my_page_url"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/my_page_url_tv"
                 tools:text="未登録" />
 
-            <ImageView
-                android:id="@+id/edit_icon_my_page_url"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

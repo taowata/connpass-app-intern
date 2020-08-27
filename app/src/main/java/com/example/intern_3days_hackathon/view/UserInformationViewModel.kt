@@ -23,9 +23,4 @@ class UserInformationViewModel(application: Application) : AndroidViewModel(appl
     val favWord2 = prefs.liveString(KEY_FAV_WORD2, "Android")
     val favWord3 = prefs.liveString(KEY_FAV_WORD3, "Python")
     val myPageUrl = prefs.liveString(KEY_MY_PAGE_URL, "https://connpass.com/user/Tao130/")
-
-    fun saveMessage(key: String, message: String) {
-        prefs.edit().putString(key, message).apply()
-    }
-
 }

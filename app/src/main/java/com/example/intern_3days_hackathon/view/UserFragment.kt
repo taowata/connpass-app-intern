@@ -1,6 +1,5 @@
 package com.example.intern_3days_hackathon.view
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,17 +33,17 @@ class UserFragment : Fragment() {
         })
 
         userInformationViewModel.favWord1.observe(viewLifecycleOwner, Observer {
-            val favWordContainer1 = view.findViewById<TextView>(R.id.like_words_container1)
+            val favWordContainer1 = view.findViewById<TextView>(R.id.fav_words_container1)
             favWordContainer1.text = it
         })
 
         userInformationViewModel.favWord2.observe(viewLifecycleOwner, Observer {
-            val favWordContainer2 = view.findViewById<TextView>(R.id.like_words_container2)
+            val favWordContainer2 = view.findViewById<TextView>(R.id.fav_words_container2)
             favWordContainer2.text = it
         })
 
         userInformationViewModel.favWord3.observe(viewLifecycleOwner, Observer {
-            val favWordContainer3 = view.findViewById<TextView>(R.id.like_words_container3)
+            val favWordContainer3 = view.findViewById<TextView>(R.id.fav_words_container3)
             favWordContainer3.text = it
         })
 
@@ -53,16 +52,35 @@ class UserFragment : Fragment() {
             myPageUrlContainer.text = it
         })
 
-        val editIcon = view.findViewById<ImageView>(R.id.edit_icon_username)
+        val userNameContainer = view.findViewById<TextView>(R.id.user_name_container)
+        userNameContainer.setOnClickListener {
+            showDialogFragment(UserInformationViewModel.KEY_USER_NAME, userNameContainer.text.toString())
+        }
 
-        editIcon.setOnClickListener {
-            showDialogFragment()
+        val favWordContainer1 = view.findViewById<TextView>(R.id.fav_words_container1)
+        favWordContainer1.setOnClickListener {
+            showDialogFragment(UserInformationViewModel.KEY_FAV_WORD1, favWordContainer1.text.toString())
+        }
+
+        val favWordContainer2 = view.findViewById<TextView>(R.id.fav_words_container2)
+        favWordContainer2.setOnClickListener {
+            showDialogFragment(UserInformationViewModel.KEY_FAV_WORD2, favWordContainer2.text.toString())
+        }
+
+        val favWordContainer3 = view.findViewById<TextView>(R.id.fav_words_container3)
+        favWordContainer3.setOnClickListener {
+            showDialogFragment(UserInformationViewModel.KEY_FAV_WORD3, favWordContainer3.text.toString())
+        }
+
+        val myPageUrlContainer = view.findViewById<TextView>(R.id.my_page_url_container)
+        myPageUrlContainer.setOnClickListener {
+            showDialogFragment(UserInformationViewModel.KEY_MY_PAGE_URL, myPageUrlContainer.text.toString())
         }
 
     }
 
-    private fun showDialogFragment() {
-        val newFragment = UserEditDialogFragment()
+    private fun showDialogFragment(key: String, value: String) {
+        val newFragment = UserEditDialogFragment.newInstance(key, value)
         newFragment.show(childFragmentManager, "edit_dialog")
     }
 }
