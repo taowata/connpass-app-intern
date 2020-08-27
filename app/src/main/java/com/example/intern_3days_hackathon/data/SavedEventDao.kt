@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface SavedEventDao {
     @Insert
-    suspend fun insert(event: SavedEvent)
+    fun insert(event: SavedEvent)
 
     @Query("select * from saved_event_table order by date asc")
     fun getAllEvent(): LiveData<List<SavedEvent>>

@@ -72,8 +72,6 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
-
-
 }
 repositories {
     maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
