@@ -20,6 +20,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
@@ -72,6 +76,10 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+
+    // Groupie
+    implementation 'com.xwray:groupie:2.3.0'
+    implementation 'com.xwray:groupie-databinding:2.3.0'
 }
 repositories {
     maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
