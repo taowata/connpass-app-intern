@@ -1,58 +1,104 @@
 package com.example.intern_3days_hackathon.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.intern_3days_hackathon.R
+import com.example.intern_3days_hackathon.data.EventDatabase
+import com.example.intern_3days_hackathon.data.SavedEvent
+import com.example.intern_3days_hackathon.databinding.FragmentSavedEventBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SavedEventFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SavedEventFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var savedEventViewModel: SavedEventViewModel
+    private lateinit var listAdapter: SavedEventListAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_event, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SavedEventFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                SavedEventFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+        val binding: FragmentSavedEventBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_saved_event, container, false)
+
+        // viewModelの初期化
+        val application = requireNotNull(this.activity).application
+        val dataSource = EventDatabase.getInstance(application).savedEventDao
+        val viewModelFactory = SavedEventViewModelFactory(dataSource, application)
+
+        savedEventViewModel = ViewModelProvider(this, viewModelFactory).get(SavedEventViewModel::class.java)
+
+        // DBにイベント保存(仮)todo
+
+        val inputButton = binding.inputEventButton
+        inputButton.setOnClickListener {
+            val eventName = binding.eventNameEdit.text.toString()
+            val newEvent = SavedEvent(title = eventName)
+            savedEventViewModel.insertEvent(newEvent)
+            Log.i("test", newEvent.title)
+        }
+
+        val recyclerView = binding.savedEventList
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+
+        listAdapter = SavedEventListAdapter(
+                SavedEventListener(
+                        // 削除アイコンのアクション
+                        { savedEvent ->
+                            //　ダイアログ表示
+                            context?.let {
+                                MaterialAlertDialogBuilder(it)
+                                        .setMessage("イベント\n${savedEvent.title}\n\nを削除しますか？")
+                                        // 削除をやめる
+                                        .setNegativeButton(resources.getString(R.string.cancel)) { _, _ -> }
+                                        // 削除する
+                                        .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
+                                            // 削除のアクション
+                                            Toast.makeText(
+                                                    context,
+                                                    "${savedEvent.title}\n\nを削除しました",
+                                                    Toast.LENGTH_LONG
+                                            )
+                                                    .show()
+                                            // TODO: 2020/08/28  
+                                            // savedEventViewModel.deleteSavedEvent(savedEvent)
+                                        }
+                                        .show()
+                            }
+
+                        },
+
+                        // 詳細画面への遷移アクション
+                        { savedRecipe ->
+                            // TODO: 2020/08/28
+//                            val list: Array<String> = arrayOf(savedRecipe.recipeTitle, savedRecipe.materialList, savedRecipe.procedureList)
+//                            val action = FavoriteFragmentDirections.showDetail(list)
+//                            view?.findNavController()?.navigate(action)
+                        }
+                )
+        )
+
+        recyclerView.adapter = listAdapter
+
+        savedEventViewModel.eventList.observe(
+                viewLifecycleOwner, { events ->
+                    listAdapter.submitList(events)
+                    recyclerView.adapter = listAdapter
+            Log.i("test", events.toString())
+        })
+
+        return binding.root
     }
 }
