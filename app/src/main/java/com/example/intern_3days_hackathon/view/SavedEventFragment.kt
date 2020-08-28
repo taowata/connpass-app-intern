@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern_3days_hackathon.R
@@ -81,11 +82,9 @@ class SavedEventFragment : Fragment() {
                         },
 
                         // 詳細画面への遷移アクション
-                        { savedRecipe ->
-                            // TODO: 2020/08/28
-//                            val list: Array<String> = arrayOf(savedRecipe.recipeTitle, savedRecipe.materialList, savedRecipe.procedureList)
-//                            val action = FavoriteFragmentDirections.showDetail(list)
-//                            view?.findNavController()?.navigate(action)
+                        { savedEvent ->
+                            val action = SavedEventFragmentDirections.actionSavedEventFragmentToSavedEventDetailFragment(savedEvent.url)
+                            view?.findNavController()?.navigate(action)
                         }
                 )
         )
