@@ -7,8 +7,12 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.intern_3days_hackathon.R
+import com.example.intern_3days_hackathon.data.EventDatabase
+import com.example.intern_3days_hackathon.data.SavedEvent
 import com.example.intern_3days_hackathon.model.response.Event
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_event_list_detail.*
 import java.util.*
 
@@ -17,6 +21,8 @@ class EventListDetailFragment : Fragment() {
 
     private var events: ArrayList<Event>? = ArrayList()
     private var event: Event? = null
+
+    private lateinit var viewModel: SavedEventViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +37,28 @@ class EventListDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_event_list_detail, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // viewModelの初期化
+        val application = requireNotNull(this.activity).application
+        val dataSource = EventDatabase.getInstance(application).savedEventDao
+        val viewModelFactory = SavedEventViewModelFactory(dataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(SavedEventViewModel::class.java)
+
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab)
+
+        fab.setOnClickListener {
+            val eventToSave = SavedEvent(
+                    title = event!!.title,
+                    date = event!!.startedAt,
+                    location = event!!.address ?: "不明",
+                    url = event!!.eventURL,
+                    )
+            viewModel.insertEvent(eventToSave)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
