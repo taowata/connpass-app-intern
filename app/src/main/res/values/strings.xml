@@ -16,6 +16,8 @@
     <string name="my_page_url">マイページURL</string>
     <string name="update">更新</string>
     <string name="accept">はい</string>
+    <string name="saved_event">保存済みイベント</string>
+    <string name="user_settings">ユーザー設定</string>
     <string name="cancel">キャンセル</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

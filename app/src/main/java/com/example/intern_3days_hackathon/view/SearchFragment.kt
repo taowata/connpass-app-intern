@@ -11,12 +11,6 @@ import com.example.intern_3days_hackathon.model.response.Event
 import java.util.*
 
 class SearchFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val appCompatActivity = activity as AppCompatActivity?
-        val actionBar = appCompatActivity?.supportActionBar
-        actionBar?.setTitle(R.string.search_view)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
