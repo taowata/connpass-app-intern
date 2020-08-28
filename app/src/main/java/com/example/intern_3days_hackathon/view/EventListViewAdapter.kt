@@ -52,4 +52,6 @@ class EventListViewAdapter(private val events: List<Event>?) : RecyclerView.Adap
         }
         return 0
     }
+
+    //TODO: setItems
 }

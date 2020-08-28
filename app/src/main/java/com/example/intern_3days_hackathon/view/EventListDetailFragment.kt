@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.model.response.Event
 import kotlinx.android.synthetic.main.fragment_event_list_detail.*
-import java.util.*
 
 
 class EventListDetailFragment : Fragment() {

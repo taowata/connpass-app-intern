@@ -6,16 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".view.EventListFragment">
 
-    <SearchView
-        android:id="@+id/serchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:queryHint="検索"
-        android:iconifiedByDefault="false" />
+<!--    <data>-->
+<!--        <variable android:name="viewModel" android:type="com.example.intern_3days_hackathon.MainViewModel" />-->
+<!--    </data>-->
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -23,12 +16,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="@dimen/space_8dp"
-        app:layout_constraintTop_toBottomOf="@id/serchView"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rv_menu">
+        app:layout_constraintRight_toRightOf="parent">
 
         <Button
+            android:id="@+id/button_category_num1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_name_kotlin" />
@@ -42,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_name_python" />
-        
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -51,9 +43,7 @@
         android:layout_height="0dp"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        tools:layout_editor_absoluteY="537dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
