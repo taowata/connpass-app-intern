@@ -14,7 +14,6 @@ import com.example.intern_3days_hackathon.data.SavedEvent
 import com.example.intern_3days_hackathon.model.response.Event
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_event_list_detail.*
-import java.util.*
 
 
 class EventListDetailFragment : Fragment() {

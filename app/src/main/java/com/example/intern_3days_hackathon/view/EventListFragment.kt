@@ -19,7 +19,6 @@ import java.util.*
 class EventListFragment : Fragment() {
 
     private var events: ArrayList<Event>? = ArrayList()
-    private var event: Event? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +31,17 @@ class EventListFragment : Fragment() {
         actionBar?.setTitle(R.string.event_list_view)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupRecyclerView()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_event_list, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        Log.i("onActivityCreateds", "${events!![0].title}")
         super.onActivityCreated(savedInstanceState)
-        setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
@@ -53,10 +56,6 @@ class EventListFragment : Fragment() {
 
             adapter.setOnItemClickListener(object : EventListViewAdapter.OnItemClickListener {
                 override fun onItemClickListener(item: Event) {
-//                    val builder = CustomTabsIntent.Builder()
-//                    val customTabsIntent = builder.build()
-//                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
-                    Log.i("", "Tap")
                     showEventListDetailFragment(item)
                 }
             })

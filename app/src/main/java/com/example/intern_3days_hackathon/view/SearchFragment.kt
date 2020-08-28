@@ -1,6 +1,7 @@
 package com.example.intern_3days_hackathon.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,17 +13,35 @@ import java.util.*
 
 class SearchFragment : Fragment() {
 
+    var searchKey: String? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_search, container, false)
+
+        searchKey =  arguments?.getString(SEARCH_KEY)
+        Log.i("onCreateView", "${searchKey}")
         return setup(v)
     }
 
     private fun setup(v: View): View {
-        EventListRepository.listArticle(PER_PAGE, "android").observe(viewLifecycleOwner, { events: ArrayList<Event> ->
-                    showEventListFragment(events)
-        })
-        return v
+        if (searchKey != null) {
+            Log.i("ここでRespositoryの呼び出しs", "${searchKey}")
+            val keyword = searchKey
+            EventListRepository.listArticle(PER_PAGE, keyword).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
+                showEventListFragment(events)
+                Log.i("searchKey", "API CALL")
+                Log.i("searchKey", "クエリは${searchKey}")
+            })
+            return v
+        } else {
+            // お気に入りワードを設定
+            EventListRepository.listArticle(PER_PAGE, searchKey).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
+                showEventListFragment(events)
+                Log.i("searchKey", "クエリはnullです")
+            })
+            return v
+        }
     }
 
     private fun showEventListFragment(events: ArrayList<Event>) {
@@ -36,5 +55,13 @@ class SearchFragment : Fragment() {
 
     companion object {
         private const val PER_PAGE = 10
+        private const val SEARCH_KEY = "connpass_events"
+        fun newInstance(searchKey: String): SearchFragment {
+            val fragment = SearchFragment()
+            val args = Bundle()
+            args.putString(SEARCH_KEY, searchKey)
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

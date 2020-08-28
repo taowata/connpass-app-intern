@@ -7,9 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.model.response.Event
-import kotlinx.android.synthetic.main.fragment_event_list_detail.view.*
 import kotlinx.android.synthetic.main.row_event_list.view.*
-import java.net.URL
 
 class EventListViewAdapter(private val events: List<Event>?) : RecyclerView.Adapter<EventListViewAdapter.Companion.EventListViewHolder>() {
     companion object {
@@ -54,4 +52,6 @@ class EventListViewAdapter(private val events: List<Event>?) : RecyclerView.Adap
         }
         return 0
     }
+
+    //TODO: setItems
 }

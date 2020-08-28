@@ -10,5 +10,5 @@ interface ConnpassService {
     @GET("event")
     @Headers("Content-Type: application/json")
     fun getEvents(@Query("count") count: Int,
-                  @Query("query") query: String?): Call<ConnpassResponse>
+                  @Query("keyword") query: String?): Call<ConnpassResponse>
 }

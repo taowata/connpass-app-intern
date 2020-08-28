@@ -20,4 +20,8 @@
     <string name="user_settings">ユーザー設定</string>
     <string name="cancel">キャンセル</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="category_name_kotlin">Kotlin</string>
+    <string name="category_name_python">Python</string>
+    <string name="category_name_swift">Swift</string>
 </resources>
