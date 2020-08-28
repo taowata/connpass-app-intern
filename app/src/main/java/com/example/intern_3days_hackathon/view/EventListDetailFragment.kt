@@ -19,7 +19,6 @@ import java.util.*
 
 class EventListDetailFragment : Fragment() {
 
-    private var events: ArrayList<Event>? = ArrayList()
     private var event: Event? = null
 
     private lateinit var viewModel: SavedEventViewModel
