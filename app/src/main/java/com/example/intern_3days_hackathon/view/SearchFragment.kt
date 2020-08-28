@@ -60,7 +60,7 @@ class SearchFragment : Fragment() {
 
     companion object {
         private const val PER_PAGE = 10
-        private const val SEARCH_KEY = "connpass_events"
+        private const val SEARCH_KEY = "searchKey"
         fun newInstance(searchKey: String): SearchFragment {
             val fragment = SearchFragment()
             val args = Bundle()

@@ -34,9 +34,15 @@ class SearchActivity : AppCompatActivity() {
             searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     searchKey = query.toString()
-                    Log.i("searchKey", "クエリは${searchKey}")
-                    //searchFragment生成
-                    showSearchFragment(searchKey!!)
+                    val bundle = Bundle()
+                    bundle.putString("searchKey", searchKey)
+                    navController.navigate(
+                            R.id.searchFragment,
+                            bundle
+                    )
+//                    Log.i("searchKey", "クエリは${searchKey}")
+//                    //searchFragment生成
+//                    showSearchFragment(searchKey!!)
                     return true
                 }
 
