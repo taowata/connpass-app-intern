@@ -1,9 +1,11 @@
 package com.example.intern_3days_hackathon.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -28,43 +30,10 @@ class EventListFragment : Fragment() {
         val appCompatActivity = activity as AppCompatActivity?
         val actionBar = appCompatActivity?.supportActionBar
         actionBar?.setTitle(R.string.event_list_view)
-
-//        val button = view?.findViewById<Button>(R.id.button_category_num1)
-//        button_category_num1.setOnClickListener {
-//            Log.i("クエリ", "Tap")
-//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val button = view.findViewById<Button>(R.id.button)
-//        button.setOnClickListener {
-//            view?.let {
-//                val searchKey  = it.editText.text.toString()
-//                EventListRepository.listArticle(PAGE, searchKey).observe(viewLifecycleOwner, Observer { qiitaListResponse: ArrayList<Event> ->
-//                    showEventListFragment(qiitaListResponse)
-//                })
-//            }
-//        }
-
-//        val searchView = view.findViewById<SearchView>(R.id.searchView)
-//        searchView.let {
-//            searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//                    val searchkey = newText.toString()
-//                    Log.i("クエリ", "${searchkey}")
-//                    view?.let {
-//                        EventListRepository.listArticle(PAGE, searchkey).observe(viewLifecycleOwner, Observer { connpassResponse: ArrayList<Event> ->
-//                            showEventListFragment(connpassResponse)
-//                        })
-//                    }
-//                    return true
-//                }
-//            })
-//        }
+        setupRecyclerView()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -72,8 +41,8 @@ class EventListFragment : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        Log.i("onActivityCreateds", "${events!![0].title}")
         super.onActivityCreated(savedInstanceState)
-        setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
@@ -91,15 +60,6 @@ class EventListFragment : Fragment() {
                     showEventListDetailFragment(item)
                 }
             })
-        }
-    }
-
-    private fun showEventListFragment(events: ArrayList<Event>) {
-        fragmentManager?.let {
-            val fragmentTransaction = it.beginTransaction()
-            fragmentTransaction.replace(R.id.nav_fragment, EventListFragment.newInstance(events))
-                    .addToBackStack(null)
-                    .commit()
         }
     }
 

@@ -13,6 +13,7 @@ import retrofit2.Response
 object EventListRepository {
     private val LOG_TAG = EventListRepository::class.java.simpleName
     fun listArticle(count: Int, query: String?): LiveData<ArrayList<Event>> {
+        Log.i("Searvice", "${query}")
         val data = MutableLiveData<ArrayList<Event>>()
         val connpassService = HttpClient.connpassService
         connpassService.getEvents(count, query).enqueue(object : Callback<ConnpassResponse> {

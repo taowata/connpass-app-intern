@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
+import androidx.fragment.app.setFragmentResultListener
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.model.response.Event
 import java.util.*
@@ -23,22 +24,30 @@ class SearchFragment : Fragment() {
         actionBar?.setTitle(R.string.search_view)
 
         searchKey =  arguments?.getString(SEARCH_KEY)
-
+        Log.i("onCreate", "${searchKey}")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_search, container, false)
+
+        searchKey =  arguments?.getString(SEARCH_KEY)
+        Log.i("onCreateView", "${searchKey}")
         return setup(v)
     }
 
     private fun setup(v: View): View {
         if (searchKey != null) {
-            EventListRepository.listArticle(PER_PAGE, searchKey).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
+            Log.i("ここでRespositoryの呼び出しs", "${searchKey}")
+            val keyword = searchKey
+            EventListRepository.listArticle(PER_PAGE, keyword).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
                 showEventListFragment(events)
+                Log.i("searchKey", "API CALL")
+                Log.i("searchKey", "クエリは${searchKey}")
             })
             return v
         } else {
+            // お気に入りワードを設定
             EventListRepository.listArticle(PER_PAGE, searchKey).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
                 showEventListFragment(events)
                 Log.i("searchKey", "クエリはnullです")
@@ -51,6 +60,15 @@ class SearchFragment : Fragment() {
         fragmentManager?.let {
             val fragmentTransaction = it.beginTransaction()
             fragmentTransaction.replace(R.id.nav_fragment, EventListFragment.newInstance(events))
+                    .addToBackStack(null)
+                    .commit()
+        }
+    }
+
+    private fun showSearchFragment(searchKey: String) {
+        fragmentManager?.let {
+            val fragmentTransaction = it.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_fragment, SearchFragment.newInstance(searchKey))
                     .addToBackStack(null)
                     .commit()
         }
