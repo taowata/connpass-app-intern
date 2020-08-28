@@ -42,16 +42,6 @@ class SavedEventFragment : Fragment() {
 
         savedEventViewModel = ViewModelProvider(this, viewModelFactory).get(SavedEventViewModel::class.java)
 
-        // DBにイベント保存(仮)todo
-
-        val inputButton = binding.inputEventButton
-        inputButton.setOnClickListener {
-            val eventName = binding.eventNameEdit.text.toString()
-            val newEvent = SavedEvent(title = eventName)
-            savedEventViewModel.insertEvent(newEvent)
-            Log.i("test", newEvent.title)
-        }
-
         val recyclerView = binding.savedEventList
         recyclerView.layoutManager = LinearLayoutManager(this.context)
 
