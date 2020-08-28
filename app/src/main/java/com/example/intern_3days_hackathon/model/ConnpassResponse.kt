@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.model.response
+package com.example.intern_3days_hackathon.model
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable

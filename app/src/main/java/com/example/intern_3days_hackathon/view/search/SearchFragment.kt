@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.search
 
 import android.content.Context
 import android.os.Bundle
@@ -6,11 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.intern_3days_hackathon.R
-import com.example.intern_3days_hackathon.liveString
-import com.example.intern_3days_hackathon.model.response.Event
+import com.example.intern_3days_hackathon.model.Event
+import com.example.intern_3days_hackathon.view.user.UserInformationViewModel
 import java.util.*
 
 class SearchFragment : Fragment() {

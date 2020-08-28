@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon
+package com.example.intern_3days_hackathon.view.user
 
 import android.content.SharedPreferences
 import androidx.lifecycle.LiveData

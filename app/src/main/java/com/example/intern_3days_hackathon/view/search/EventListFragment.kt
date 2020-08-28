@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.search
 
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern_3days_hackathon.R
-import com.example.intern_3days_hackathon.model.response.Event
+import com.example.intern_3days_hackathon.model.Event
 import kotlinx.android.synthetic.main.fragment_event_list.*
 import java.util.*
 

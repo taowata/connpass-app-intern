@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.save
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,15 +7,8 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.intern_3days_hackathon.R
-import com.example.intern_3days_hackathon.data.EventDatabase
-import com.example.intern_3days_hackathon.data.SavedEvent
-import com.example.intern_3days_hackathon.model.response.Event
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.fragment_event_list_detail.*
-import java.util.*
 
 
 class SavedEventDetailFragment : Fragment() {

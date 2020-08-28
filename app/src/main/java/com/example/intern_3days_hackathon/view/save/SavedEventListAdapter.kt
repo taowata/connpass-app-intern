@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.save
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

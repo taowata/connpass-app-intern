@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.data.EventDatabase
 import com.example.intern_3days_hackathon.data.SavedEvent
-import com.example.intern_3days_hackathon.model.response.Event
+import com.example.intern_3days_hackathon.model.Event
+import com.example.intern_3days_hackathon.view.save.SavedEventViewModel
+import com.example.intern_3days_hackathon.view.save.SavedEventViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_event_list_detail.*
 

@@ -1,9 +1,8 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.user
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
-import com.example.intern_3days_hackathon.liveString
 
 class UserInformationViewModel(application: Application) : AndroidViewModel(application) {
 

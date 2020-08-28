@@ -1,11 +1,11 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.search
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.intern_3days_hackathon.HttpClient
-import com.example.intern_3days_hackathon.model.response.ConnpassResponse
-import com.example.intern_3days_hackathon.model.response.Event
+import com.example.intern_3days_hackathon.model.ConnpassResponse
+import com.example.intern_3days_hackathon.model.Event
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.search
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern_3days_hackathon.R
-import com.example.intern_3days_hackathon.model.response.Event
+import com.example.intern_3days_hackathon.model.Event
 import kotlinx.android.synthetic.main.row_event_list.view.*
 
 class EventListViewAdapter(private val events: List<Event>?) : RecyclerView.Adapter<EventListViewAdapter.Companion.EventListViewHolder>() {

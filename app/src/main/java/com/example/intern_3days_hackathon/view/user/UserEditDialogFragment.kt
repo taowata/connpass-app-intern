@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.user
 
 import android.app.AlertDialog
 import android.app.Dialog
