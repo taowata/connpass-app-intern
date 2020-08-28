@@ -74,7 +74,8 @@ class SavedEventFragment : Fragment() {
 
                         // 詳細画面への遷移アクション
                         { savedEvent ->
-                            val action = SavedEventFragmentDirections.actionSavedEventFragmentToSavedEventDetailFragment(savedEvent.url)
+                            val action =
+                                    SavedEventFragmentDirections.actionSavedEventFragmentToSavedEventDetailFragment(savedEvent.url)
                             view?.findNavController()?.navigate(action)
                         }
                 )
