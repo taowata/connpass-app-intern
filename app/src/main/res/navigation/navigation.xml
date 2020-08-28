@@ -12,10 +12,22 @@
         android:id="@+id/savedEventFragment"
         android:name="com.example.intern_3days_hackathon.view.SavedEventFragment"
         android:label="fragment_saved_event"
-        tools:layout="@layout/fragment_saved_event" />
+        tools:layout="@layout/fragment_saved_event" >
+        <action
+            android:id="@+id/action_savedEventFragment_to_savedEventDetailFragment"
+            app:destination="@id/savedEventDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.intern_3days_hackathon.view.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/savedEventDetailFragment"
+        android:name="com.example.intern_3days_hackathon.view.SavedEventDetailFragment"
+        android:label="SavedEventDetailFragment" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>
