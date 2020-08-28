@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.model.response.Event
 import java.util.*
@@ -60,15 +58,6 @@ class SearchFragment : Fragment() {
         fragmentManager?.let {
             val fragmentTransaction = it.beginTransaction()
             fragmentTransaction.replace(R.id.nav_fragment, EventListFragment.newInstance(events))
-                    .addToBackStack(null)
-                    .commit()
-        }
-    }
-
-    private fun showSearchFragment(searchKey: String) {
-        fragmentManager?.let {
-            val fragmentTransaction = it.beginTransaction()
-            fragmentTransaction.replace(R.id.nav_fragment, SearchFragment.newInstance(searchKey))
                     .addToBackStack(null)
                     .commit()
         }
