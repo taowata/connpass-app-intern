@@ -1,5 +1,6 @@
 package com.example.intern_3days_hackathon.view
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.intern_3days_hackathon.R
+import com.example.intern_3days_hackathon.liveString
 import com.example.intern_3days_hackathon.model.response.Event
 import java.util.*
 
@@ -36,7 +38,10 @@ class SearchFragment : Fragment() {
             return v
         } else {
             // お気に入りワードを設定
-            EventListRepository.listArticle(PER_PAGE, searchKey).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
+            val prefs = context?.getSharedPreferences(UserInformationViewModel.PREF, Context.MODE_PRIVATE)
+            val favWord1 = prefs?.getString(UserInformationViewModel.KEY_FAV_WORD1, "Kotlin")
+
+            EventListRepository.listArticle(PER_PAGE, favWord1).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
                 showEventListFragment(events)
                 Log.i("searchKey", "クエリはnullです")
             })
