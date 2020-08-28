@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.model.Event
@@ -19,6 +21,12 @@ class SearchFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_search, container, false)
+
+        val activity = requireActivity()
+        val searchView = activity.findViewById<SearchView>(R.id.searchView)
+        val linearLayout = activity.findViewById<LinearLayout>(R.id.linearLayout)
+        searchView.visibility = View.VISIBLE
+        linearLayout.visibility = View.VISIBLE
 
         searchKey =  arguments?.getString(SEARCH_KEY)
         Log.i("onCreateView", "${searchKey}")

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.widget.LinearLayout
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -36,6 +38,13 @@ class EventListDetailFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        val activity = requireActivity()
+        val searchView = activity.findViewById<SearchView>(R.id.searchView)
+        val linearLayout = activity.findViewById<LinearLayout>(R.id.linearLayout)
+        searchView.visibility = View.GONE
+        linearLayout.visibility = View.GONE
+
         return inflater.inflate(R.layout.fragment_event_list_detail, container, false)
     }
 
