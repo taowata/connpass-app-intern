@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -28,8 +30,15 @@ class SavedEventFragment : Fragment() {
         val binding: FragmentSavedEventBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_saved_event, container, false)
 
+
+        val activity = requireActivity()
+        val searchView = activity.findViewById<SearchView>(R.id.searchView)
+        val linearLayout = activity.findViewById<LinearLayout>(R.id.linearLayout)
+        searchView.visibility = View.GONE
+        linearLayout.visibility = View.GONE
+
         // viewModelの初期化
-        val application = requireNotNull(this.activity).application
+        val application = activity.application
         val dataSource = EventDatabase.getInstance(application).savedEventDao
         val viewModelFactory = SavedEventViewModelFactory(dataSource, application)
 
