@@ -11,6 +11,5 @@ data class SavedEvent(
         @ColumnInfo(name = "location") var location: String = "",
         @ColumnInfo(name = "event_url") var url: String = "",
         @ColumnInfo(name = "has_finished") var hasFinished: Boolean = false,
-        @ColumnInfo(name = "image_url") var imageUrl: String = "",
         @PrimaryKey(autoGenerate = true) val eventId: Int = 0
 )

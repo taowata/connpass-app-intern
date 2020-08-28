@@ -7,15 +7,27 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.intern_3days_hackathon.view.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="@string/search_view" />
     <fragment
         android:id="@+id/savedEventFragment"
         android:name="com.example.intern_3days_hackathon.view.SavedEventFragment"
-        android:label="fragment_saved_event"
-        tools:layout="@layout/fragment_saved_event" />
+        android:label="@string/saved_event"
+        tools:layout="@layout/fragment_saved_event" >
+        <action
+            android:id="@+id/action_savedEventFragment_to_savedEventDetailFragment"
+            app:destination="@id/savedEventDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.intern_3days_hackathon.view.UserFragment"
-        android:label="fragment_user"
+        android:label="@string/user_settings"
         tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/savedEventDetailFragment"
+        android:name="com.example.intern_3days_hackathon.view.SavedEventDetailFragment"
+        android:label="@string/event_list_view_detail" >
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
 </navigation>

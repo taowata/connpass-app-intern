@@ -15,16 +15,6 @@ class SearchFragment : Fragment() {
 
     var searchKey: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val appCompatActivity = activity as AppCompatActivity?
-        val actionBar = appCompatActivity?.supportActionBar
-        actionBar?.setTitle(R.string.search_view)
-
-        searchKey =  arguments?.getString(SEARCH_KEY)
-        Log.i("onCreate", "${searchKey}")
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_search, container, false)

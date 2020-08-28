@@ -47,7 +47,7 @@ class SavedEventListAdapter(
         items = favoriteList
     }
 
-    fun getSavedRecipe(position: Int): SavedEvent {
+    fun getSavedEvent(position: Int): SavedEvent {
         return items[position]
     }
 
