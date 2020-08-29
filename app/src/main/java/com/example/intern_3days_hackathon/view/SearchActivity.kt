@@ -8,8 +8,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.intern_3days_hackathon.R
+import com.example.intern_3days_hackathon.model.Event
+import com.example.intern_3days_hackathon.view.search.EventListFragment
 import com.example.intern_3days_hackathon.view.search.SearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.ArrayList
 
 class SearchActivity : AppCompatActivity() {
 
@@ -34,14 +37,11 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     searchKey = query.toString()
                     val bundle = Bundle()
-                    bundle.putString("searchKey", searchKey)
+                    bundle.putString(SEARCH_KEY, searchKey)
                     navController.navigate(
                             R.id.searchFragment,
                             bundle
                     )
-//                    Log.i("searchKey", "クエリは${searchKey}")
-//                    //searchFragment生成
-//                    showSearchFragment(searchKey!!)
                     return true
                 }
 
@@ -60,5 +60,9 @@ class SearchActivity : AppCompatActivity() {
                     .addToBackStack(null)
                     .commit()
         }
+    }
+
+    companion object {
+        private const val SEARCH_KEY = "searchKey"
     }
 }
