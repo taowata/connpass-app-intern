@@ -18,7 +18,6 @@ class SavedEventDetailFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val appCompatActivity = activity as AppCompatActivity?
         val activity = requireActivity()
         val actionBar = activity.actionBar
         actionBar?.setTitle(R.string.event_list_view_detail)
