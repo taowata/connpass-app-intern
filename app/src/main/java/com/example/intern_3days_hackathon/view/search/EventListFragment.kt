@@ -26,8 +26,8 @@ class EventListFragment : Fragment() {
             events = argument.getSerializable(CONNPASS_EVENTS) as? ArrayList<Event>
         }
 
-        val appCompatActivity = activity as AppCompatActivity?
-        val actionBar = appCompatActivity?.supportActionBar
+        val activity = requireActivity()
+        val actionBar = activity.actionBar
         actionBar?.setTitle(R.string.event_list_view)
     }
 
