@@ -35,25 +35,22 @@ class SearchFragment : Fragment() {
 
     private fun setup(v: View): View {
         if (searchKey != null) {
-            Log.i("ここでRespositoryの呼び出しs", "${searchKey}")
             val keyword = searchKey
-            EventListRepository.listArticle(PER_PAGE, keyword).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
-                showEventListFragment(events)
-                Log.i("searchKey", "API CALL")
-                Log.i("searchKey", "クエリは${searchKey}")
-            })
+            CallEventListRepository(keyword)
             return v
         } else {
             // お気に入りワードを設定
             val prefs = context?.getSharedPreferences(UserInformationViewModel.PREF, Context.MODE_PRIVATE)
             val favWord1 = prefs?.getString(UserInformationViewModel.KEY_FAV_WORD1, "Kotlin")
-
-            EventListRepository.listArticle(PER_PAGE, favWord1).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
-                showEventListFragment(events)
-                Log.i("searchKey", "クエリはnullです")
-            })
+            CallEventListRepository(favWord1)
             return v
         }
+    }
+
+    private fun CallEventListRepository(keyword: String?) {
+        EventListRepository.listArticle(PER_PAGE, keyword).observe(viewLifecycleOwner, androidx.lifecycle.Observer { events: ArrayList<Event> ->
+            showEventListFragment(events)
+        })
     }
 
     private fun showEventListFragment(events: ArrayList<Event>) {
