@@ -50,3 +50,9 @@
   * [OkHttp](https://square.github.io/okhttp/#okhttp)
   * [gson](https://github.com/google/gson)
   * [Retrofit2](https://square.github.io/retrofit/)
+
+### 制作者
+
+[@taowata](https://github.com/taowata)
+
+[@syuheifujita](syuheifujita)
