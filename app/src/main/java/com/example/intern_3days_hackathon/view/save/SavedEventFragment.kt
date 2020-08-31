@@ -9,14 +9,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.intern_3days_hackathon.R
 import com.example.intern_3days_hackathon.data.EventDatabase
 import com.example.intern_3days_hackathon.databinding.FragmentSavedEventBinding
-import com.example.intern_3days_hackathon.view.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SavedEventFragment : Fragment() {
@@ -27,9 +25,7 @@ class SavedEventFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentSavedEventBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_saved_event, container, false)
-
+        val binding = FragmentSavedEventBinding.inflate(layoutInflater, container, false)
 
         val activity = requireActivity()
         val searchView = activity.findViewById<SearchView>(R.id.searchView)
