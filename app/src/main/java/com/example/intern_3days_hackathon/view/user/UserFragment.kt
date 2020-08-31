@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.intern_3days_hackathon.R
+import com.example.intern_3days_hackathon.databinding.FragmentUserBinding
 
 
 class UserFragment : Fragment() {
@@ -26,7 +27,9 @@ class UserFragment : Fragment() {
         searchView.visibility = View.GONE
         linearLayout.visibility = View.GONE
 
-        return inflater.inflate(R.layout.fragment_user, container, false)
+        val binding = FragmentUserBinding.inflate(layoutInflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

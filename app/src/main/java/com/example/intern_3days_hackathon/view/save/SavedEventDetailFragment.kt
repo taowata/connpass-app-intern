@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.intern_3days_hackathon.R
+import com.example.intern_3days_hackathon.databinding.FragmentSavedEventBinding
+import com.example.intern_3days_hackathon.databinding.FragmentSavedEventDetailBinding
 
 
 class SavedEventDetailFragment : Fragment() {
@@ -24,11 +26,12 @@ class SavedEventDetailFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_saved_event_detail, container, false)
-        val webView = v.findViewById<WebView>(R.id.webView)
+        val binding = FragmentSavedEventDetailBinding.inflate(layoutInflater, container, false)
+        val webView = binding.webView
         webView.webViewClient
         webView.loadUrl(safeArgs.url)
-        return v
+
+        return binding.root
     }
 
 
