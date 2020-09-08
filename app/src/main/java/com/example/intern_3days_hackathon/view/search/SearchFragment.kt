@@ -40,6 +40,7 @@ class SearchFragment : Fragment() {
             return v
         } else {
             // お気に入りワードを設定
+
             val prefs = context?.getSharedPreferences(UserInformationViewModel.PREF, Context.MODE_PRIVATE)
             val favWord1 = prefs?.getString(UserInformationViewModel.KEY_FAV_WORD1, "Kotlin")
             CallEventListRepository(favWord1)
