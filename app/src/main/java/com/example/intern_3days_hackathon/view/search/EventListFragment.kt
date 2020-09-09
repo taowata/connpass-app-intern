@@ -1,18 +1,18 @@
-package com.example.intern_3days_hackathon.view
+package com.example.intern_3days_hackathon.view.search
 
-import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.intern_3days_hackathon.R
-import com.example.intern_3days_hackathon.model.response.Event
+import com.example.intern_3days_hackathon.databinding.FragmentEventListBinding
+import com.example.intern_3days_hackathon.model.Event
 import kotlinx.android.synthetic.main.fragment_event_list.*
 import java.util.*
 
@@ -27,18 +27,23 @@ class EventListFragment : Fragment() {
             events = argument.getSerializable(CONNPASS_EVENTS) as? ArrayList<Event>
         }
 
-        val appCompatActivity = activity as AppCompatActivity?
-        val actionBar = appCompatActivity?.supportActionBar
+        val activity = requireActivity()
+        val actionBar = activity.actionBar
         actionBar?.setTitle(R.string.event_list_view)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupRecyclerView()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_event_list, container, false)
+        val binding = FragmentEventListBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        Log.i("onActivityCreateds", "${events!![0].title}")
         super.onActivityCreated(savedInstanceState)
-        setupRecyclerView()
     }
 
     private fun setupRecyclerView() {
@@ -53,11 +58,18 @@ class EventListFragment : Fragment() {
 
             adapter.setOnItemClickListener(object : EventListViewAdapter.OnItemClickListener {
                 override fun onItemClickListener(item: Event) {
-                    val builder = CustomTabsIntent.Builder()
-                    val customTabsIntent = builder.build()
-                    customTabsIntent.launchUrl(view.context, Uri.parse(item.eventURL))
+                    showEventListDetailFragment(item)
                 }
             })
+        }
+    }
+
+    private fun showEventListDetailFragment(item: Event) {
+        fragmentManager?.let {
+            val fragmentTransaction = it.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_fragment, EventListDetailFragment.newInstance(item))
+                    .addToBackStack(null)
+                    .commit()
         }
     }
 

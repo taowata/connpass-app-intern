@@ -1,4 +1,4 @@
-package com.example.intern_3days_hackathon.model.response
+package com.example.intern_3days_hackathon.model
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
@@ -63,7 +63,8 @@ data class Event(
         val lat: String?,
         val lon: String?,
         val series: Series
-)
+) : java.io.Serializable
+//ここにserializableが追加された
 
 @Serializable
 data class Series(
