@@ -8,8 +8,6 @@ import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import com.example.intern_3days_hackathon.R
 
-private const val ARG_PARAM1 = "key"
-private const val ARG_PARAM2 = "value"
 
 class UserEditDialogFragment : DialogFragment() {
 
@@ -60,6 +58,9 @@ class UserEditDialogFragment : DialogFragment() {
     }
 
     companion object {
+        private const val ARG_PARAM1 = "key"
+        private const val ARG_PARAM2 = "value"
+
         @JvmStatic
         fun newInstance(key: String, value: String) =
                 UserEditDialogFragment().apply {

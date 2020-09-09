@@ -41,5 +41,4 @@
         app:layout_constraintLeft_toLeftOf="@id/tv_event_title"
         app:layout_constraintStart_toEndOf="@id/tv_event_address" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
